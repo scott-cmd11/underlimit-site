@@ -50,3 +50,9 @@ test("support and privacy pages retain the current domain support address", asyn
     assert.doesNotMatch(html, /Scott\.hazlitt@gmail\.com/i);
   }
 });
+
+test("support gives separate export instructions for image and PDF results", async () => {
+  const html = await readFile(new URL("../docs/support.html", import.meta.url), "utf8");
+  assert.match(html, /For an image result, choose Save to Photos or share the JPEG/);
+  assert.match(html, /For a shrunk or combined PDF result, export the PDF through the system share sheet/);
+});
